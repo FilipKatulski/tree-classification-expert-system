@@ -2,60 +2,33 @@
     xpozytywne/2,
     xnegatywne/2.
 
-roslina_jest(sosna) :- jest_to(),
-                        jest to(),
-                        pozytywne(),
-                        pozytywne().
+roslina_jest(sosna) :- jest_to(iglaste),
+                        jest_to(drzewo),
+                        pozytywne(ma,szyszki),
+                        pozytywne(ma,pien_dwukolorowy),
+                        pozytywne(ma,igly_dlugie).
 
-zwierze_jest(gepard) :- jest_to(ssak),
-                        jest_to(miesozerny),
-                        pozytywne(ma,brunatny_kolor),
-                        pozytywne(ma,ciemne_plamy).
-                        
-zwierze_jest(tygrys) :- jest_to(ssak),
-                        jest_to(miesozerny),
-                        pozytywne(ma,brunatny_kolor),
-                        pozytywne(ma,czarne_pasy).
-                        
-zwierze_jest(zyrafa) :- jest_to(kopytonogi),
-                        pozytywne(ma,dluga_szyja),
-                        pozytywne(ma,dlugie_nogi),
-                        pozytywne(ma,ciemne_plamy).
-                        
-zwierze_jest(zebra) :- jest_to(kopytonogi),
-                        pozytywne(ma,czarne_pasy).
-                        
-zwierze_jest(strus) :- jest_to(ptak),
-                        negatywne(czy,lata),
-                        pozytywne(ma,dluga_szyja),
-                        pozytywne(ma,dlugie_nogi),
-                        pozytywne(ma,biale_i_czarne_kolory).
-                        
-zwierze_jest(pingwin) :- jest_to(ptak),
-                        negatywne(czy,lata),
-                        pozytywne(czy,plywa),
-                        pozytywne(ma,biale_i_czarne_kolory).
-                        
-zwierze_jest(albatros) :- jest_to(ptak),
-                        pozytywne(czy,lata_dobrze).
+roslina_jest(brzoza) :- jest_to(lisciaste),
+                        jest_to(drzewo),
+                        negatywne(ma,zoledzie),
+                        pozytywne(ma,liscie_bez_wciec),
+                        pozytywne(ma,biale_i_czarne_kolory_kory).
 
-jest_to(ssak) :- pozytywne(ma,siersc).
+roslina_jest(swierk) :- jest_to(iglaste),
+                        jest_to(drzewo),
+                        pozytywne(ma,szyszki),
+                        pozytywne(ma,igly_krotkie).
 
-jest_to(ssak) :- pozytywne(czy,daje_mleko).
+roslina_jest(dab) :- jest_to(lisciaste),
+                     jest_to(drzewo),
+                     pozytywne(ma,zoledzie),
+                     pozytywne(ma,liscie_klapowate).
 
-jest_to(ptak) :- pozytywne(ma,piora).
+jest_to(lisciaste) :- pozytywne(ma,liscie).
 
-jest_to(ptak) :- pozytywne(czy,lata), pozytywne(czy,znosi_jajka).
+jest_to(iglaste) :- pozytywne(ma,igly).
 
-jest_to(miesozerny) :- pozytywne(czy,je_mieso).
-
-jest_to(miesozerny) :- pozytywne(ma,ostre_zeby),
-                        pozytywne(ma,pazury),
-                        pozytywne(ma,wysuniete_do_przodu_oczy).
-                        
-jest_to(kopytonogi) :- jest_to(ssak), pozytywne(ma,kopyta).
-
-jest_to(kopytonogi) :- jest_to(ssak), pozytywne(czy,przezuwa_pokarm).
+jest_to(drzewo) :- pozytywne(ma,pien). 
 
 pozytywne(X,Y) :- xpozytywne(X,Y), !.
 
@@ -65,12 +38,12 @@ negatywne(X,Y) :- xnegatywne(X,Y), !.
 
 negatywne(X,Y) :- \+xpozytywne(X,Y), pytaj(X,Y,nie).
 
-pytaj(X,Y,tak) :- !, format('~w to zwierze ~w ? (t/n)~n',[X,Y]),
+pytaj(X,Y,tak) :- !, format('~w ta roslina ~w ? (t/n)~n',[X,Y]),
                     read(Reply),
                     (Reply = 't'),
                     pamietaj(X,Y,tak).
                     
-pytaj(X,Y,nie) :- !, format('~w to zwierze ~w ? (t/n)~n',[X,Y]),
+pytaj(X,Y,nie) :- !, format('~w ta roslina ~w ? (t/n)~n',[X,Y]),
                     read(Reply),
                     (Reply = 'n'),
                     pamietaj(X,Y,nie).
@@ -84,10 +57,10 @@ wyczysc_fakty :- write('Przycisnij cos aby wyjsc'), nl,
                     retractall(xnegatywne(_,_)),
                     get_char(_).
                     
-wykonaj :- zwierze_jest(X), !,
-            format('~nTwoim zwierzeciem moze byc ~w', X),
+wykonaj :- roslina_jest(X), !,
+            format('~nTwoja roslina moze byc ~w', X),
             nl, wyczysc_fakty.
             
-wykonaj :- write('Nie jestem w stanie odgadnac co to za zwierze.'), nl,
+wykonaj :- write('Nie jestem w stanie odgadnac co to za roslina.'), nl,
             wyczysc_fakty.
 
