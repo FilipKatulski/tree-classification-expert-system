@@ -1,66 +1,85 @@
-:- dynamic
-    xpozytywne/2,
-    xnegatywne/2.
+roslina(sosna,
+        [kora(czarna),
+        rodzaj_lisci(igly),
+        owoce(szyszki)
+        ]).
 
-roslina_jest(sosna) :- jest_to(iglaste),
-                        jest_to(drzewo),
-                        pozytywne(ma,szyszki),
-                        pozytywne(ma,pien_dwukolorowy),
-                        pozytywne(ma,igly_dlugie).
+roslina(grab,
+        [kora(czarna),
+        rodzaj_lisci(liscie),
+        owoce(grabu)
+        ]).
 
-roslina_jest(brzoza) :- jest_to(lisciaste),
-                        jest_to(drzewo),
-                        negatywne(ma,zoledzie),
-                        pozytywne(ma,liscie_bez_wciec),
-                        pozytywne(ma,biale_i_czarne_kolory_kory).
+roslina(brzoza,
+        [kora(biala),
+        rodzaj_lisci(liscie),
+        rodzaj_kwiatu(rozdzielnoplciowe),
+        owoce(brzozy)
+        ]).
 
-roslina_jest(swierk) :- jest_to(iglaste),
-                        jest_to(drzewo),
-                        pozytywne(ma,szyszki),
-                        pozytywne(ma,igly_krotkie).
+roslina(swierk,
+        [kora(brazowa),
+        rodzaj_lisci(igly),
+        owoce(szyszki)
+        ]).
 
-roslina_jest(dab) :- jest_to(lisciaste),
-                     jest_to(drzewo),
-                     pozytywne(ma,zoledzie),
-                     pozytywne(ma,liscie_klapowate).
+roslina(dab_szypulkowy,
+        [kora(brazowa),
+        rodzaj_lisci(liscie),
+        owoce(zoledzie)
+        ]).
 
-jest_to(lisciaste) :- pozytywne(ma,liscie).
+roslina(lipa,
+        [kora(brazowa),
+        rodzaj_lisci(liscie),
+        rodzaj_kwiatu(promieniste, bialozielone),
+        owoce(orzechy)
+        ]).
 
-jest_to(iglaste) :- pozytywne(ma,igly).
+kora(brazowa).
+kora(biala).
+kora(czarna).
 
-jest_to(drzewo) :- pozytywne(ma,pien). 
+rodzaj_kwiatu(rozdzielnoplciowe).
+rodzaj_kwiatu(promieniste, bialozielone).
 
-pozytywne(X,Y) :- xpozytywne(X,Y), !.
+rodzaj_lisci(igly).
+rodzaj_lisci(liscie).
 
-pozytywne(X,Y) :- \+xnegatywne(X,Y), pytaj(X,Y,tak).
+owoce(szyszki).
+owoce(orzechy).
+owoce(zoledzie).
 
-negatywne(X,Y) :- xnegatywne(X,Y), !.
+/*sprawdza czy cecha jest w podanej liscie cech*/
+elem(Cecha, [Cecha|_]) :-  !.
+elem(Cecha, [_|Cechy]) :-  elem(Cecha, Cechy).
 
-negatywne(X,Y) :- \+xpozytywne(X,Y), pytaj(X,Y,nie).
+/*sprawdza czy wszytskie cechy są w podanej liscie cech*/
+all_elems([], _).
+all_elems([Cecha|Inne], Lista) :- elem(Cecha, Lista), all_elems(Inne, Lista).
 
-pytaj(X,Y,tak) :- !, format('~w ta roslina ~w ? (t/n)~n',[X,Y]),
-                    read(Reply),
-                    (Reply = 't'),
-                    pamietaj(X,Y,tak).
-                    
-pytaj(X,Y,nie) :- !, format('~w ta roslina ~w ? (t/n)~n',[X,Y]),
-                    read(Reply),
-                    (Reply = 'n'),
-                    pamietaj(X,Y,nie).
-                    
-pamietaj(X,Y,tak) :- assertz(xpozytywne(X,Y)).
+/*znajduje wszytskie rosliny posiadajace cechy opisane w liscie Wiedza*/
+znajdz_rosliny(Wiedza, Rosliny) :- findall(Nazwa, (roslina(Nazwa, Lista), all_elems(Wiedza,Lista)), Rosliny).
 
-pamietaj(X,Y,nie) :- assertz(xnegatywne(X,Y)).
+/*znajdz_pytanie([], Cecha, Opcje) :- roslina(_, [Cecha|_]), Cecha(Opcje).*/
+/*znajdz_pytanie([], Cecha, Opcje) :- roslina(_, [Cecha|_]).*/
 
-wyczysc_fakty :- write('Przycisnij cos aby wyjsc'), nl,
-                    retractall(xpozytywne(_,_)),
-                    retractall(xnegatywne(_,_)),
-                    get_char(_).
-                    
-wykonaj :- roslina_jest(X), !,
-            format('~nTwoja roslina moze byc ~w', X),
-            nl, wyczysc_fakty.
-            
-wykonaj :- write('Nie jestem w stanie odgadnac co to za roslina.'), nl,
-            wyczysc_fakty.
 
+znajdz_pytanie([], Cecha, Opcje) :- roslina(_, [Fakt|_]), znajdz_opcje_faktu(Fakt, Cecha, Opcje). /*sposrod wszystkich roslin*/
+znajdz_pytanie([R|Osliny], _, _) :- length([R|Osliny], 1), !. /*koniec szukania, zostala jedna roslina*/
+znajdz_pytanie(Rosliny, Cecha, Opcje) :- rozne_cechy(Rosliny, [Fakt|_]), znajdz_opcje_faktu(Fakt,Cecha, Opcje).
+
+/* znajduje wszystkie cechy ktorymi roznia sie dwie rosliny */
+rozne_cechy([], []).
+rozne_cechy([R|Osliny], Wynik) :- roslina(R, Lista), rozne_cechy(Osliny, SemiWynik), subtract(Lista, SemiWynik, Wynik).
+
+/* znajduje wszytskie opcje danego faktu */
+znajdz_opcje_faktu(Cecha, Nazwa, Wynik) :-  /* Cecha == cecha rosliny np kora(biala)*/
+    Cecha=..[Nazwa,_],            /*wyciaga z tej cechy nazwe faktu np. kora */
+    Kl=..[Nazwa, Opcje],         /*tworzy nowe query zeby znalezc wszystkie argumenty tego faktu np. kora(opcje) */
+        P=..[findall, Opcje, Kl,Wynik], /*tworzy funkcje do znalezienia wszytskich opcji z uzyciem findall np. findall(Opcje, kora(Opcje), Wyniki) */
+    call(P).                   /*wykonuje funkcje*/
+
+
+nastepny_krok(Wiedza, Rosliny, Cecha, Opcje) :-
+    znajdz_rosliny(Wiedza, Rosliny),  znajdz_pytanie(Rosliny, Cecha, Opcje).
