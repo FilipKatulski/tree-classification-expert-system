@@ -7,20 +7,48 @@ roslina(sosna,
 roslina(grab,
         [kora(czarna),
         rodzaj_lisci(liscie),
-          owoce(grabu)
+        owoce(grabu)
         ]).
 
 roslina(brzoza,
         [kora(biala),
         rodzaj_lisci(liscie),
-          owoce(grabu)
+        rodzaj_kwiatu(rozdzielnoplciowe),
+        owoce(brzozy)
         ]).
 
+roslina(swierk,
+        [kora(brazowa),
+        rodzaj_lisci(igly),
+        owoce(szyszki)
+        ]).
+
+roslina(dab_szypulkowy,
+        [kora(brazowa),
+        rodzaj_lisci(liscie),
+        owoce(zoledzie)
+        ]).
+
+roslina(lipa,
+        [kora(brazowa),
+        rodzaj_lisci(liscie),
+        rodzaj_kwiatu(promieniste, bialozielone),
+        owoce(orzechy)
+        ]).
+
+kora(brazowa).
 kora(biala).
 kora(czarna).
 
+rodzaj_kwiatu(rozdzielnoplciowe).
+rodzaj_kwiatu(promieniste, bialozielone).
+
 rodzaj_lisci(igly).
 rodzaj_lisci(liscie).
+
+owoce(szyszki).
+owoce(orzechy).
+owoce(zoledzie).
 
 /*sprawdza czy cecha jest w podanej liscie cech*/
 elem(Cecha, [Cecha|_]) :-  !.

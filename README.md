@@ -4,8 +4,9 @@ A Tree Classification expert system based on PROLOG language.
 
 ### notes
 - working server in backend-v3 file
-- works on desktop Prolog  version, not online :(
-- possible interaction:
+- works on desktop Prolog version only, not online :(
+
+### Possible interactions:
 ```
 ?- nastepny_krok([],R,C,O).
 R = [sosna, grab, brzoza],
@@ -20,7 +21,7 @@ O = [biala, czarna].
 ?- nastepny_krok([rodzaj_lisci(liscie), kora(biala)],R,C,O).
 R = [brzoza].
 ```
-
+### Alternative query types:
 ```
 ?- znajdz_pytanie([grab,sosna],C,O).
 C = rodzaj_lisci,
