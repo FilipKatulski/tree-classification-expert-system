@@ -1,10 +1,13 @@
 # tree-classification-expert-system
 
+
+
 A Tree Classification expert system based on PROLOG language.
 
 ### notes
 - working server in backend-v3 file
 - works on desktop Prolog version only, not online :(
+- to start frontend go to ```trees-app``` directory and type ```npm start```
 
 ### Possible interactions:
 ```
