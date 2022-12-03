@@ -32,8 +32,8 @@ roslina(dab_szypulkowy,
 roslina(lipa,
         [kora(brazowa),
         rodzaj_lisci(liscie),
-        rodzaj_kwiatu(promieniste, bialozielone),
-        owoce(orzechy)
+        rodzaj_kwiatu(promieniste),
+        owoce(brak)
         ]).
 
 kora(brazowa).
@@ -41,7 +41,7 @@ kora(biala).
 kora(czarna).
 
 rodzaj_kwiatu(rozdzielnoplciowe).
-rodzaj_kwiatu(promieniste, bialozielone).
+rodzaj_kwiatu(promieniste).
 
 rodzaj_lisci(igly).
 rodzaj_lisci(liscie).
@@ -49,6 +49,7 @@ rodzaj_lisci(liscie).
 owoce(szyszki).
 owoce(orzechy).
 owoce(zoledzie).
+owoce(brak).
 
 /*sprawdza czy cecha jest w podanej liscie cech*/
 elem(Cecha, [Cecha|_]) :-  !.

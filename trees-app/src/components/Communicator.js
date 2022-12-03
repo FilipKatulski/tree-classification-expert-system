@@ -13,8 +13,8 @@ function Communicator(navigate, knowledge) {
     }
   
     const sendRequest = () => {
-    //   let response = fetch('http://------------:8080/', {  // Enter your IP address here
-    //     method: 'POST', 
+    //   let response = fetch('http://127.0.0.1:8080/', {  // Enter your IP address here
+    //     method: 'GET', 
     //     mode: 'cors', 
     //     body: JSON.stringify({'knowledge':knowledge}),
     //     headers: {
