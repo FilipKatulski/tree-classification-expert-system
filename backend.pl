@@ -29,54 +29,49 @@ roslina('modrzew europejski', [
 roslina('kasztanowiec zwyczajny',
         [rodzaj_rosliny(drzewo),
         rodzaj_lisci('liscie'),
-        ksztalt_lisci('liscie zlozone'),
-        liscie_zlozone('dloniasto zlozone (z mniejszych listkow ulozonych w sposob przypominajacy dlon, listki odchodza promieniscie od ogonka)'),
-        zimozielone(nie)
+        budowa_lisci('liscie zlozone'),
+        liscie_zlozone('dloniasto zlozone (z mniejszych listkow ulozonych w sposob przypominajacy dlon, listki odchodza promieniscie od ogonka)')
         ]).
 
 roslina('robinia akacjowa',
         [rodzaj_rosliny(drzewo),
         rodzaj_lisci('liscie'),
-        ksztalt_lisci('liscie zlozone'),
+        budowa_lisci('liscie zlozone'),
         liscie_zlozone('pierzasto zlozone (u ktorych listki umieszczone sa po obu stronach wzdluz osi glownej (ksztalt piora, stad nazwa))'),
-        ciernie_na_galeziach('wystepuja pary ostrych cierni (naprzeciwlegle'),
-        zimozielone(nie)
+        ciernie_na_galeziach('wystepuja pary ostrych cierni (naprzeciwlegle)')
         ]).
 
 roslina('jarzab pospolity (jarzebina)',
         [rodzaj_rosliny(drzewo),
         rodzaj_lisci('liscie'),
-        ksztalt_lisci('liscie zlozone'),
+        budowa_lisci('liscie zlozone'),
         liscie_zlozone('pierzasto zlozone (u ktorych listki umieszczone sa po obu stronach wzdluz osi glownej (ksztalt piora, stad nazwa))'),
         ciernie_na_galeziach('brak'),
-        zimozielone(nie),
         owoce('male, kuliste, jablkowate owocki, po dojrzeniu jaskrawoczerwone')
         ]).
 
 roslina('perelkowiec japonski',
         [rodzaj_rosliny(drzewo),
         rodzaj_lisci('liscie'),
-        ksztalt_lisci('liscie zlozone'),
+        budowa_lisci('liscie zlozone'),
         liscie_zlozone('pierzasto zlozone (u ktorych listki umieszczone sa po obu stronach wzdluz osi glownej (ksztalt piora, stad nazwa))'),
         ciernie_na_galeziach('brak'),
-        zimozielone(nie),
         owoce('straki z nasionami, pomiedzy nasionami wystepuja charakterystyczne przewezenia')
         ]).
 
 roslina('orzech czarny',
         [rodzaj_rosliny(drzewo),
         rodzaj_lisci('liscie'),
-        ksztalt_lisci('liscie zlozone'),
+        budowa_lisci('liscie zlozone'),
        liscie_zlozone('pierzasto zlozone (u ktorych listki umieszczone sa po obu stronach wzdluz osi glownej (ksztalt piora, stad nazwa))'),
         ciernie_na_galeziach('brak'),
-        zimozielone(nie),
         owoce('podobne do owocow orzecha wloskiego,  trojwarstwowe - na zewnatrz zielona, niepekajaca okrywa, po srodku ciemna, zdrewniala, twarda skorupa, wewnatrz pofaldowane, duze nasienie')
         ]).
 
 roslina('forsycja posrednia',
         [rodzaj_rosliny(krzew),
         rodzaj_lisci('liscie'),
-        ksztalt_lisci('liscie pojedyncze'),
+        budowa_lisci('liscie pojedyncze'),
         ustawienie_lisci_pojedynczych('naprzeciwlegle lub okolkowo'),
         zimozielone(nie),
         miejsce_rosniecia('na ziemii')
@@ -85,7 +80,7 @@ roslina('forsycja posrednia',
 roslina('jemiola pospolita',
         [rodzaj_rosliny(krzew),
         rodzaj_lisci('liscie'),
-        ksztalt_lisci('liscie pojedyncze'),
+        budowa_lisci('liscie pojedyncze'),
         ustawienie_lisci_pojedynczych('naprzeciwlegle lub okolkowo'),
         zimozielone(tak),
         miejsce_rosniecia('na galeziach innych drzew')
@@ -94,7 +89,7 @@ roslina('jemiola pospolita',
 roslina('bukszpan wieczniezielony',
         [rodzaj_rosliny(krzew),
         rodzaj_lisci('liscie'),
-        ksztalt_lisci('liscie pojedyncze'),
+        budowa_lisci('liscie pojedyncze'),
         ustawienie_lisci_pojedynczych('naprzeciwlegle lub okolkowo'),
         zimozielone(tak),
         miejsce_rosniecia('na ziemii')
@@ -103,7 +98,7 @@ roslina('bukszpan wieczniezielony',
 roslina('deren swidwa',
         [rodzaj_rosliny(drzewo),
         rodzaj_lisci('liscie'),
-        ksztalt_lisci('liscie pojedyncze'),
+        budowa_lisci('liscie pojedyncze'),
         ustawienie_lisci_pojedynczych('naprzeciwlegle lub okolkowo'),
         owoce('zebrane w grona, male, kulisto-owalne, czarne')
         ]).
@@ -111,9 +106,61 @@ roslina('deren swidwa',
 roslina('deren jadalny',
         [rodzaj_rosliny(drzewo),
         rodzaj_lisci('liscie'),
-        ksztalt_lisci('liscie pojedyncze'),
+        budowa_lisci('liscie pojedyncze'),
         ustawienie_lisci_pojedynczych('naprzeciwlegle lub okolkowo'),
         owoce('zebrane w grona, male, owalne, blyszczaco-czerwone pestkowce')
+        ]).
+
+roslina('lipa amerykanska',
+        [rodzaj_rosliny(drzewo),
+        rodzaj_lisci('liscie'),
+        budowa_lisci('liscie pojedyncze'),
+        ustawienie_lisci_pojedynczych('skretolegle (naprzemianlegle)'),
+        ksztalt_lisci('liscie sercowate, matowe, bardzo duze (ponad 15cm)')
+        ]).
+
+roslina('milorzab dwuklapowy',
+        [rodzaj_rosliny(drzewo),
+        rodzaj_lisci('liscie'),
+        budowa_lisci('liscie pojedyncze'),
+        ustawienie_lisci_pojedynczych('skretolegle (naprzemianlegle)'),
+        ksztalt_lisci('liscie wachlarzowate')
+        ]).
+
+roslina('tulipanowiec amerykanski',
+        [rodzaj_rosliny(drzewo),
+        rodzaj_lisci('liscie'),
+        budowa_lisci('liscie pojedyncze'),
+        ustawienie_lisci_pojedynczych('skretolegle (naprzemianlegle)'),
+        ksztalt_lisci('wyraznie powycinane lub klapowane'),
+        zarys_lisci('liscie nietypowe, w obrysie prostokatne, z duza klapa srodkowa')
+        ]).
+
+roslina('platan klonolistny',
+        [rodzaj_rosliny(drzewo),
+        rodzaj_lisci('liscie'),
+        budowa_lisci('liscie pojedyncze'),
+        ustawienie_lisci_pojedynczych('skretolegle (naprzemianlegle)'),
+        ksztalt_lisci('wyraznie powycinane lub klapowane'),
+        zarys_lisci('liscie dloniasto klapowane, podobne do lisci klona')
+        ]).
+
+roslina('wierzba placzaca',
+        [rodzaj_rosliny(drzewo),
+        rodzaj_lisci('liscie'),
+        budowa_lisci('liscie pojedyncze'),
+        ustawienie_lisci_pojedynczych('skretolegle (naprzemianlegle)'),
+        ksztalt_lisci('bez wiekszych wciec i klap'),
+        zarys_lisci('liscie bardzo waskie i wydluzone')
+        ]).
+
+roslina('topola osika',
+        [rodzaj_rosliny(drzewo),
+        rodzaj_lisci('liscie'),
+        budowa_lisci('liscie pojedyncze'),
+        ustawienie_lisci_pojedynczych('skretolegle (naprzemianlegle)'),
+        ksztalt_lisci('bez wiekszych wciec i klap'),
+        zarys_lisci('liscie okraglawe, bez wciecia przy ogonku, brzeg falisty, karbowany')
         ]).
 
 rodzaj_rosliny(krzew).
@@ -143,8 +190,8 @@ cechy_igiel('wiotkie, jesienia zolkna i opadaja na ziemie').
 zimozielone(tak).
 zimozielone(nie).
 
-ksztalt_lisci('liscie pojedyncze').
-ksztalt_lisci('liscie zlozone').
+budowa_lisci('liscie pojedyncze').
+budowa_lisci('liscie zlozone').
 
 liscie_zlozone('dloniasto zlozone (z mniejszych listkow ulozonych w sposob przypominajacy dlon, listki odchodza promieniscie od ogonka)').
 liscie_zlozone('pierzasto zlozone (u ktorych listki umieszczone sa po obu stronach wzdluz osi glownej (ksztalt piora, stad nazwa))').
@@ -160,6 +207,16 @@ owoce('straki z nasionami, pomiedzy nasionami wystepuja charakterystyczne przewe
 owoce('podobne do owocow orzecha wloskiego, trojwarstwowe - na zewnatrz zielona, niepekajaca okrywa, po srodku ciemna, zdrewniala, twarda skorupa, wewnatrz pofaldowane, duze nasienie').
 owoce('zebrane w grona, male, kulisto-owalne, czarne').
 owoce('zebrane w grona, male, owalne, blyszczaco-czerwone pestkowce').
+
+ksztalt_lisci('sercowate, matowe, bardzo duze (ponad 15cm)').
+ksztalt_lisci('wachlarzowate').
+ksztalt_lisci('wyraznie powycinane lub klapowane').
+ksztalt_lisci('bez wiekszych wciec i klap').
+
+zarys_lisci('liscie nietypowe, w obrysie prostokatne, z duza klapa srodkowa').
+zarys_lisci('liscie dloniasto klapowane, podobne do lisci klona').
+zarys_lisci('liscie bardzo waskie i wydluzone').
+zarys_lisci('liscie okraglawe, bez wciecia przy ogonku, brzeg falisty, karbowany').
 
 /*sprawdza czy cecha jest w podanej liscie cech*/
 elem(Cecha, [Cecha|_]) :-  !.

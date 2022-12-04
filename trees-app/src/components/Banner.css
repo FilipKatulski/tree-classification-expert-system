@@ -22,13 +22,13 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin-top:7vh;
+  margin-top:5vh;
   min-height: 65vh;
   height: 100vh;
   justify-content: center;
   background-blend-mode: overlay;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.5);
   z-index:-1;
   background-image: url('./../../public/images/background.jpg');
 }
