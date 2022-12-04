@@ -8,11 +8,15 @@ from interface import send_data
 # creating a class for handling
 # basic Get and Post Requests
 class GFG(BaseHTTPRequestHandler):
-
+    
+    
     def do_POST(self):
 
         self.send_response(200)
         self.send_header('content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', '*')
+        self.send_header('Access-Control-Allow-Headers', '*')
         self.end_headers()
 
         content_len = int(self.headers.get('Content-Length'))
@@ -22,13 +26,25 @@ class GFG(BaseHTTPRequestHandler):
 
         post_body_decode = codecs.decode(post_body, 'utf-8')
         data = json.loads(post_body_decode, strict=False)
+        for key, value in data.items():
+            value = "'"+value +"'"
+            data[key] = value
 
         print('POST body data: ', type(data), data)
 
         prolog_response = send_data(data)
-
+        prolog_response = prolog_response.replace("'", '"') 
         self.wfile.write(bytes(prolog_response, 'utf-8'))
 
+    # for cors requests 
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header('content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', '*')
+        self.send_header('Access-Control-Allow-Headers', '*')
+        self.end_headers()
+        
     
 	# creating a function for Get Request
     def do_GET(self):

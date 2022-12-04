@@ -18,6 +18,21 @@
 }
 
 
+.OptionsPage, .NotFoundPage, .ResultPage {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-top:7vh;
+  min-height: 65vh;
+  height: 100vh;
+  justify-content: center;
+  background-blend-mode: overlay;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  z-index:-1;
+  background-image: url('./../../public/images/background.jpg');
+}
+
 .BannerText{
   color:rgba(17, 17, 17, 0.848);
   background-color: rgba(255, 255, 255, 0.5);

@@ -22,7 +22,7 @@ function Banner() {
         </Typography>
         </Box>
 
-        <Button onClick={() => Communicator(navigate, [])} variant="contained" color="success" sx={{ mt:'3%', mx:"45%"}} size="large" align="center">Sprawdz!</Button>
+        <Button onClick={() => Communicator(navigate, {})} variant="contained" color="success" sx={{ mt:'3%', mx:"45%"}} size="large" align="center">Sprawdz!</Button>
       </div>
   );
 }

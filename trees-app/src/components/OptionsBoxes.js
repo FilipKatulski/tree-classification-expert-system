@@ -12,11 +12,11 @@ function OptionsBoxes(props) {
 
     return (
         <div className='OptionsBoxes'>
-        <Grid container spacing={3}  justifyContent="center" sx={{px:'8%'}}>
+        <Grid container spacing={2}  justifyContent="center" sx={{px:'8%'}}>
             {Array.from(props.state.options).map((option_name) => (
-                    <Grid item xs={3} key={option_name}>
-                        <Card variant="outlined" sx={{boxShadow: 3  }}>
-                            <CardActionArea onClick={() => {
+                    <Grid item xs={4} key={option_name}>
+                        <Card variant="outlined" sx={{boxShadow: 3 }}>
+                            <CardActionArea sx={{height:'100%'  }} onClick={() => {
                                 knowledge[props.state.key] = option_name;
                                 Communicator(navigate, knowledge);
                                 }}>

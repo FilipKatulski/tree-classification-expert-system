@@ -6,43 +6,39 @@ const result_path = '/result'
 const empty_path = '/404'
 
 
-function Communicator(navigate, knowledge) {
+async function Communicator(navigate, knowledge) {
   
     const routeChange = (result, path) =>{ 
       navigate(path, {state:result});
     }
   
-    const sendRequest = () => {
-    //   let response = fetch('http://127.0.0.1:8080/', {  // Enter your IP address here
-    //     method: 'GET', 
-    //     mode: 'cors', 
-    //     body: JSON.stringify({'knowledge':knowledge}),
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       // Accept: 'application/json',
-    //     }
-    //   })
-  
-    //   if (!response.ok) {
-    //     throw new Error(`Error! status: ${response.status}`);
-    //   }
-  
-    //   const result = await response.json();
-        let result = {trees:['dab', 'brzoza'], key:'kora', options:['czarna', 'biala', 'szara']};
+    const sendRequest = async () => {
+        console.log(knowledge)
 
-        if(knowledge['kora'] != undefined){
-            result = {trees:['dab', 'sosna'], key:'rodzaj_lisci', options:['igły', 'liscie', 'blaszki', 'zima jest']};
-        }
-        if(knowledge['kora'] != undefined && knowledge['rodzaj_lisci'] != undefined){
-            result = {trees:['sosna'], key:'rodzaj_lisci', options:['igły', 'liscie', 'blaszki', 'zima jest']};
-        }
-        return result;
+        let server_response = await fetch('http://127.0.0.1:5555/', {  
+            method: 'POST', 
+            // mode: 'cors', 
+            body: JSON.stringify(knowledge),
+            headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Access-Control-Allow-Origin': '*'
+            }
+        })
+        . then(response => {
+            if (!response.ok) {
+                throw new Error(`Error! status: ${response.status}`);
+            }
+            return response.text();
+      });
 
+        let server_response_json = JSON.parse(server_response)
+        return server_response_json;
     }
 
     console.log(knowledge);
 
-    let result = sendRequest();
+    let result = await sendRequest();
+    console.log('outside', result)
     result["knowledge"] = knowledge;
 
     let path = options_path;
@@ -56,6 +52,7 @@ function Communicator(navigate, knowledge) {
 
     routeChange(result, path);
     return;
+    
 
 }
 export default Communicator;

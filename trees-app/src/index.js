@@ -7,6 +7,7 @@ import OptionsPage from './components/OptionsPage';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router";
 import ResultPage from './components/ResultPage';
+import NotFoundPage from './components/NotFoundPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +17,7 @@ root.render(
           <Route path="/" element={<WelcomePage />} />
           <Route path="/options" element={<OptionsPage />} />
           <Route path="/result" element={<ResultPage />} />
-          {/* <Route path="/404" element={<NotFoundPage />} /> */}
+          <Route path="/404" element={<NotFoundPage />} />
         </Routes>
       </Router>
     

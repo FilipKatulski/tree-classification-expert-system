@@ -10,7 +10,7 @@ function ResultPage() {
    return (
     <div className="ResultPage">
       <NavBar />
-      <Typography variant='h2' align='center' sx={{mt: '15%', mb:'3%'}}>
+      <Typography variant='h2' align='center' sx={{pt: '10%', mb:'3%'}}>
           Drzewo, którego szukasz to:
       </Typography>
       <Typography variant='h1' align='center' sx={{mt: '7%', mb:'3%'}}>

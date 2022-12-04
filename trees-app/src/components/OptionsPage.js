@@ -11,8 +11,8 @@ function OptionsPage() {
    return (
     <div className="OptionsPage">
       <NavBar />
-      <Typography variant='h2' align='center' sx={{mt: '7%', mb:'3%'}}>
-          {state.key.replace("_", ' ')}:
+      <Typography variant='h2' align='center' sx={{pt: '7%', mb:'3%'}}>
+          {state.key.replaceAll("_", ' ')}:
       </Typography>
       <OptionsBoxes state={state} />
     </div>
