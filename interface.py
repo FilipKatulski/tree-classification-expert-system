@@ -1,5 +1,7 @@
 from pyswip import Prolog
 
+from pyswip.easy import Variable
+
 def send_data(post_body: dict) -> str:
     """
     Receives data, consults with Prolog script and returns the answer.
@@ -25,6 +27,21 @@ def send_data(post_body: dict) -> str:
     Rs = list(prolog.query(query_body, catcherrors=True))[0]['R']
     Cs = list(prolog.query(query_body, catcherrors=True))[0]['C']
     Os = list(prolog.query(query_body, catcherrors=True))[0]['O']
+
+    # print("R:", type(Rs), Rs, type(Rs[0]), Rs[0])
+    # print("C:", type(Cs), Cs, type(Cs[0]), Cs[0])
+    # print("O:", type(Os), Os, type(Os[0]), Os[0])
+
+    Rs = [str(r) for r in Rs]
+    if isinstance(Cs, list) and isinstance(Cs, Variable):
+        Cs = [str(c) for c in Cs]
+    elif isinstance(Cs, Variable):
+            Cs = str(Cs)
+    
+    if not isinstance(Os, Variable):
+        Os = [str(o) for o in Os]
+    else:
+        Os = str(Os)
 
     print("R:", type(Rs), Rs)
     print("C:", type(Cs), Cs)
